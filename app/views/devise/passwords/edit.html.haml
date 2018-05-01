@@ -16,6 +16,6 @@
               = f.label :password_confirmation, "Confirm new password"
               = f.password_field :password_confirmation, autocomplete: "off"
             .card-action
-              = f.submit "Change my password"
+              = f.submit "Change my password", class: "btn waves-effect waves-light green white-text"
 
 = render "devise/shared/links"

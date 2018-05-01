@@ -10,6 +10,6 @@
             = f.label :email
             = f.email_field :email, autofocus: true, autocomplete: "email"
           .card-action
-            = f.submit "Send me reset password instructions"
+            = f.submit "Send me reset password instructions", class: "btn waves-effect waves-light green white-text"
 
 = render "devise/shared/links"

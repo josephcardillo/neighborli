@@ -1,25 +1,29 @@
-%p#notice= notice
-%h1 Feedbacks
+.section
+  .container
+    %p#notice= notice
+    %h1 Feedbacks
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Rating
-      %th Transaction
-      %th Comment
-      %th{colspan: 3}
-  %tbody
-    - @feedbacks.each do |feedback|
-      %tr
-        %td= feedback.user_id
-        %td= feedback.rating
-        %td= feedback.transaction_id
-        %td= feedback.comment
-        %td= link_to 'Show', feedback
-        %td= link_to 'Edit', edit_feedback_path(feedback)
-        %td= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' }
+.section
+  .container
+    %table
+      %thead
+        %tr
+          %th User
+          %th Rating
+          %th Transaction
+          %th Comment
+          %th{colspan: 3}
+      %tbody
+        - @feedbacks.each do |feedback|
+          %tr
+            %td= feedback.user_id
+            %td= feedback.rating
+            %td= feedback.transaction_id
+            %td= feedback.comment
+            %td= link_to 'Show', feedback
+            %td= link_to 'Edit', edit_feedback_path(feedback)
+            %td= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Feedback', new_feedback_path
+.section
+  .container
+    = link_to 'New Feedback', new_feedback_path

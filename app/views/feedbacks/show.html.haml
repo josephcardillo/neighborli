@@ -1,15 +1,19 @@
-%p#notice= notice
-%p
-  %strong User:
-  = @feedback.user_id
-%p
-  %strong Rating:
-  = @feedback.rating
-%p
-  %strong Transaction:
-  = @feedback.transaction_id
-%p
-  %strong Comment:
-  = @feedback.comment
-= link_to 'Edit', edit_feedback_path(@feedback)
-= link_to 'Back', feedbacks_path
+.section
+  .container
+    %p#notice= notice
+    %ul.collection
+      %li.collection-item
+        %strong User:
+        = @feedback.user_id
+      %li.collection-item
+        %strong Rating:
+        = @feedback.rating
+      %li.collection-item
+        %strong Transaction:
+        = @feedback.transaction_id
+      %li.collection-item
+        %strong Comment:
+        = @feedback.comment
+      %li.collection-item
+        = link_to 'Edit', edit_feedback_path(@feedback)
+        = link_to 'Back', feedbacks_path

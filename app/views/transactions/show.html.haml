@@ -1,0 +1,47 @@
+%p#notice= notice
+
+%p
+  %strong Borrower:
+  = @transaction.borrower_id
+%p
+  %strong Lender:
+  = @transaction.lender_id
+%p
+  %strong Status:
+  = @transaction.status
+%p
+  %strong Expires at:
+  = @transaction.expires_at
+%p
+  %strong Starts at:
+  = @transaction.starts_at
+%p
+  %strong Type:
+  = @transaction.type
+%p
+  %strong Has borrower feedback:
+  = @transaction.has_borrower_feedback
+%p
+  %strong Has lender feedback:
+  = @transaction.has_lender_feedback
+%p
+  %strong Category:
+  = @transaction.category
+%p
+  %strong Title:
+  = @transaction.title
+%p
+  %strong Body:
+  = @transaction.body
+%p
+  %strong Item location:
+  = @transaction.item_location
+%p
+  %strong Loan duration:
+  = @transaction.loan_duration
+%p
+  %strong Day rate:
+  = @transaction.day_rate
+
+= link_to 'Edit', edit_transaction_path(@transaction) |
+= link_to 'Back', transactions_path

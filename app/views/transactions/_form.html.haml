@@ -1,6 +1,6 @@
 .card
   .card-content
-    = form_with(model: transaction, local: true) do |form|
+    = form_with(model: transaction, local: true) do |f|
     - if transaction.errors.any?
       #error_explanation
       %h2= "#{pluralize(transaction.errors.count, "error")} prohibited this transaction from being saved:"
@@ -8,46 +8,46 @@
         = transaction.errors.full_messages.each do |message|
           %li= message
     .input-field
-      = form.label :borrower_id
-      = form.number_field :borrower_id
+      = f.label :borrower_id
+      = f.number_field :borrower_id
     .input-field
-      = form.label :lender_id
-      = form.number_field :lender_id
+      = f.label :lender_id
+      = f.number_field :lender_id
     .input-field
-      = form.label :status
-      = form.text_field :status
+      = f.label :status
+      = f.text_field :status
     .input-field
-      = form.label :expires_at
-      = form.datetime_select :expires_at
+      = f.label :expires_at
+      = f.datetime_select :expires_at
     .input-field
-      = form.label :starts_at
-      = form.datetime_select :starts_at
+      = f.label :starts_at
+      = f.datetime_select :starts_at
     .input-field
-      = form.label :type
-      = form.text_field :type
+      = f.label :type
+      = f.text_field :type
     .input-field
-      = form.label :has_borrower_feedback
-      = form.check_box :has_borrower_feedback
+      = f.label :has_borrower_feedback
+      = f.check_box :has_borrower_feedback
     .input-field
-      = form.label :has_lender_feedback
-      = form.check_box :has_lender_feedback
+      = f.label :has_lender_feedback
+      = f.check_box :has_lender_feedback
     .input-field
-      = form.label :category
-      = form.text_field :category
+      = f.label :category
+      = f.text_field :category
     .input-field
-      = form.label :title
-      = form.text_field :title
+      = f.label :title
+      = f.text_field :title
     .input-field
-      = form.label :body
-      = form.text_area :body
+      = f.label :body
+      = f.text_area :body
     .input-field
-      = form.label :item_location
-      = form.text_field :item_location
+      = f.label :item_location
+      = f.text_field :item_location
     .input-field
-      = form.label :loan_duration
-      = form.number_field :loan_duration
+      = f.label :loan_duration
+      = f.number_field :loan_duration
     .input-field
-      = form.label :day_rate
-      = form.text_field :day_rate
+      = f.label :day_rate
+      = f.text_field :day_rate
     .card-action
-      = form.submit, class: "btn waves-effect waves-light green white-text"
+      = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

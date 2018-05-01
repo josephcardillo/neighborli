@@ -1,6 +1,7 @@
 class Transaction < ApplicationRecord
     belongs_to :borrower, optional: true, class_name:"User"
     belongs_to :lender, optional: true, class_name: "User"
+    mount_uploader :avatar, AvatarUploader
 
     validates :status, presence: true, length: {in: 4..9}
     validates :expires_at, presence: true
@@ -12,6 +13,5 @@ class Transaction < ApplicationRecord
     validates :item_location, presence: true
     validates :loan_duration, presence: true
     validates :day_rate, presence: true
-    
 end
 

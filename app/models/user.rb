@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :feedback
   has_many :borrowers, through: :transactions, source: :user
   has_many :lenders, through: :transactions, source: :user
+  mount_uploader :avatar, AvatarUploader
 end

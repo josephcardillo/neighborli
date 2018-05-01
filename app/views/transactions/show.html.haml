@@ -17,7 +17,7 @@
   = @transaction.starts_at
 %p
   %strong Type:
-  = @transaction.type
+  = @transaction.action
 %p
   %strong Has borrower feedback:
   = @transaction.has_borrower_feedback
@@ -42,6 +42,8 @@
 %p
   %strong Day rate:
   = @transaction.day_rate
+
+  = image_tag @transaction.avatar.url
 
 = link_to 'Edit', edit_transaction_path(@transaction) |
 = link_to 'Back', transactions_path

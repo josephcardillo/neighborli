@@ -1,24 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @feedback.user_id %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @feedback.rating %>
-</p>
-
-<p>
-  <strong>Transaction:</strong>
-  <%= @feedback.transaction_id %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @feedback.comment %>
-</p>
-
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
+%p#notice= notice
+%p
+  %strong User:
+  = @feedback.user_id
+%p
+  %strong Rating:
+  = @feedback.rating
+%p
+  %strong Transaction:
+  = @feedback.transaction_id
+%p
+  %strong Comment:
+  = @feedback.comment
+= link_to 'Edit', edit_feedback_path(@feedback)
+= link_to 'Back', feedbacks_path

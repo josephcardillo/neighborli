@@ -1,4 +1,4 @@
 // Fix labels overlapping prefilled text inputs.
-$(document).ready(() => {
+$(document).on("turbolinks:load", () => {
   M.updateTextFields();
 });

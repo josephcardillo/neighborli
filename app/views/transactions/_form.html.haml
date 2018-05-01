@@ -1,51 +1,53 @@
-= form_with(model: transaction, local: true) do |form|
-  - if transaction.errors.any?
-    #error_explanation
-    %h2= "#{pluralize(transaction.errors.count, "error")} prohibited this transaction from being saved:"
-    %ul
-      = transaction.errors.full_messages.each do |message|
-        %li= message
-  .field
-    = form.label :borrower_id
-    = form.number_field :borrower_id
-  .field
-    = form.label :lender_id
-    = form.number_field :lender_id
-  .field
-    = form.label :status
-    = form.text_field :status
-  .field
-    = form.label :expires_at
-    = form.datetime_select :expires_at
-  .field
-    = form.label :starts_at
-    = form.datetime_select :starts_at
-  .field
-    = form.label :action
-    = form.text_field :action
-  .field
-    = form.label :has_borrower_feedback
-    = form.check_box :has_borrower_feedback
-  .field
-    = form.label :has_lender_feedback
-    = form.check_box :has_lender_feedback
-  .field
-    = form.label :category
-    = form.text_field :category
-  .field
-    = form.label :title
-    = form.text_field :title
-  .field
-    = form.label :body
-    = form.text_area :body
-  .field
-    = form.label :item_location
-    = form.text_field :item_location
-  .field
-    = form.label :loan_duration
-    = form.number_field :loan_duration
-  .field
-    = form.label :day_rate
-    = form.text_field :day_rate
-  .actions
-    = form.submit
+.card
+  .card-content
+    = form_with(model: transaction, local: true) do |f|
+    - if transaction.errors.any?
+      #error_explanation
+      %h2= "#{pluralize(transaction.errors.count, "error")} prohibited this transaction from being saved:"
+      %ul
+        = transaction.errors.full_messages.each do |message|
+          %li= message
+    .input-field
+      = f.label :borrower_id
+      = f.number_field :borrower_id
+    .input-field
+      = f.label :lender_id
+      = f.number_field :lender_id
+    .input-field
+      = f.label :status
+      = f.text_field :status
+    .input-field
+      = f.label :expires_at
+      = f.datetime_select :expires_at
+    .input-field
+      = f.label :starts_at
+      = f.datetime_select :starts_at
+    .input-field
+      = f.label :action
+      = f.text_field :action
+    .input-field
+      = f.label :has_borrower_feedback
+      = f.check_box :has_borrower_feedback
+    .input-field
+      = f.label :has_lender_feedback
+      = f.check_box :has_lender_feedback
+    .input-field
+      = f.label :category
+      = f.text_field :category
+    .input-field
+      = f.label :title
+      = f.text_field :title
+    .input-field
+      = f.label :body
+      = f.text_area :body
+    .input-field
+      = f.label :item_location
+      = f.text_field :item_location
+    .input-field
+      = f.label :loan_duration
+      = f.number_field :loan_duration
+    .input-field
+      = f.label :day_rate
+      = f.text_field :day_rate
+    .card-action
+      = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

@@ -1,6 +1,6 @@
-<h1>Editing Feedback</h1>
-
-<%= render 'form', feedback: @feedback %>
-
-<%= link_to 'Show', @feedback %> |
-<%= link_to 'Back', feedbacks_path %>
+.section
+  .container
+    %h1 Editing Feedback
+    = render 'form', feedback: @feedback
+    = link_to 'Show', @feedback
+    = link_to 'Back', feedbacks_path

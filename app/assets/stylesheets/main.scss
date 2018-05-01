@@ -1,0 +1,13 @@
+/* Globals */
+html,
+body {
+  background-color: #fafafa;
+}
+main > .section:first-of-type {
+  padding-top: 6rem;
+}
+
+/* Button Fix */
+i.white-text > input {
+  color: white;
+}

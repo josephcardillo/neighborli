@@ -1,49 +1,51 @@
-%p#notice= notice
-
-%p
-  %strong Borrower:
-  = @transaction.borrower_id
-%p
-  %strong Lender:
-  = @transaction.lender_id
-%p
-  %strong Status:
-  = @transaction.status
-%p
-  %strong Expires at:
-  = @transaction.expires_at
-%p
-  %strong Starts at:
-  = @transaction.starts_at
-%p
-  %strong Type:
-  = @transaction.action
-%p
-  %strong Has borrower feedback:
-  = @transaction.has_borrower_feedback
-%p
-  %strong Has lender feedback:
-  = @transaction.has_lender_feedback
-%p
-  %strong Category:
-  = @transaction.category
-%p
-  %strong Title:
-  = @transaction.title
-%p
-  %strong Body:
-  = @transaction.body
-%p
-  %strong Item location:
-  = @transaction.item_location
-%p
-  %strong Loan duration:
-  = @transaction.loan_duration
-%p
-  %strong Day rate:
-  = @transaction.day_rate
-
-  = image_tag @transaction.avatar.url
-
-= link_to 'Edit', edit_transaction_path(@transaction) |
-= link_to 'Back', transactions_path
+.section
+  .container
+    %p#notice= notice
+    %ul.collection
+      %li.collection-item
+        %strong Borrower:
+        = @transaction.borrower_id
+      %li.collection-item
+        %strong Lender:
+        = @transaction.lender_id
+      %li.collection-item
+        %strong Status:
+        = @transaction.status
+      %li.collection-item
+        %strong Expires at:
+        = @transaction.expires_at
+      %li.collection-item
+        %strong Starts at:
+        = @transaction.starts_at
+      %li.collection-item
+        %strong Action:
+        = @transaction.action
+      %li.collection-item
+        %strong Has borrower feedback:
+        = @transaction.has_borrower_feedback
+      %li.collection-item
+        %strong Has lender feedback:
+        = @transaction.has_lender_feedback
+      %li.collection-item
+        %strong Category:
+        = @transaction.category
+      %li.collection-item
+        %strong Title:
+        = @transaction.title
+      %li.collection-item
+        %strong Body:
+        = @transaction.body
+      %li.collection-item
+        %strong Item location:
+        = @transaction.item_location
+      %li.collection-item
+        %strong Loan duration:
+        = @transaction.loan_duration
+      %li.collection-item
+        %strong Day rate:
+        = @transaction.day_rate
+      %li.collection-item
+        = image_tag @transaction.avatar.url
+      %li.collection-item
+        = link_to 'Edit', edit_transaction_path(@transaction)
+        = link_to 'Back', transactions_path

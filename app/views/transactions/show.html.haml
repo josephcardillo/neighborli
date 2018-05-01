@@ -1,74 +1,47 @@
-<p id="notice"><%= notice %></p>
+%p#notice= notice
 
-<p>
-  <strong>Borrower:</strong>
-  <%= @transaction.borrower_id %>
-</p>
+%p
+  %strong Borrower:
+  = @transaction.borrower_id
+%p
+  %strong Lender:
+  = @transaction.lender_id
+%p
+  %strong Status:
+  = @transaction.status
+%p
+  %strong Expires at:
+  = @transaction.expires_at
+%p
+  %strong Starts at:
+  = @transaction.starts_at
+%p
+  %strong Type:
+  = @transaction.type
+%p
+  %strong Has borrower feedback:
+  = @transaction.has_borrower_feedback
+%p
+  %strong Has lender feedback:
+  = @transaction.has_lender_feedback
+%p
+  %strong Category:
+  = @transaction.category
+%p
+  %strong Title:
+  = @transaction.title
+%p
+  %strong Body:
+  = @transaction.body
+%p
+  %strong Item location:
+  = @transaction.item_location
+%p
+  %strong Loan duration:
+  = @transaction.loan_duration
+%p
+  %strong Day rate:
+  = @transaction.day_rate
 
-<p>
-  <strong>Lender:</strong>
-  <%= @transaction.lender_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @transaction.status %>
-</p>
-
-<p>
-  <strong>Expires at:</strong>
-  <%= @transaction.expires_at %>
-</p>
-
-<p>
-  <strong>Starts at:</strong>
-  <%= @transaction.starts_at %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @transaction.type %>
-</p>
-
-<p>
-  <strong>Has borrower feedback:</strong>
-  <%= @transaction.has_borrower_feedback %>
-</p>
-
-<p>
-  <strong>Has lender feedback:</strong>
-  <%= @transaction.has_lender_feedback %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @transaction.category %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @transaction.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @transaction.body %>
-</p>
-
-<p>
-  <strong>Item location:</strong>
-  <%= @transaction.item_location %>
-</p>
-
-<p>
-  <strong>Loan duration:</strong>
-  <%= @transaction.loan_duration %>
-</p>
-
-<p>
-  <strong>Day rate:</strong>
-  <%= @transaction.day_rate %>
-</p>
-
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+= link_to 'Edit', edit_transaction_path(@transaction) |
+= link_to 'Back', transactions_path

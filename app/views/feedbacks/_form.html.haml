@@ -1,37 +1,23 @@
-<%= form_with(model: feedback, local: true) do |form| %>
-  <% if feedback.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
-
-      <ul>
-      <% feedback.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :transaction_id %>
-    <%= form.number_field :transaction_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+.card
+  .card-content
+    = form_with(model: feedback, local: true) do |f|
+      - if feedback.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(feedback.errors.count, "error")} prohibited this feedback from being saved:"
+          %ul
+          - feedback.errors.full_messages.each do |message|
+            %li= message
+      .input-field
+        = f.label :user_id
+        = f.number_field :user_id
+      .input-field
+        = f.label :rating
+        = f.number_field :rating
+      .input-field
+        = f.label :transaction_id
+        = f.number_field :transaction_id
+      .input-field
+        = f.label :comment
+        = f.text_field :comment
+      .card-action
+        = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

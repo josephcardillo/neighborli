@@ -1,7 +1,7 @@
 = form_with(model: transaction, local: true) do |form|
   - if transaction.errors.any?
     #error_explanation
-    %h2= pluralize(transaction.errors.count, "error") prohibited this transaction from being saved:
+    %h2= "#{pluralize(transaction.errors.count, "error")} prohibited this transaction from being saved:"
     %ul
       = transaction.errors.full_messages.each do |message|
         %li= message
@@ -21,8 +21,8 @@
     = form.label :starts_at
     = form.datetime_select :starts_at
   .field
-    = form.label :type
-    = form.text_field :type
+    = form.label :action
+    = form.text_field :action
   .field
     = form.label :has_borrower_feedback
     = form.check_box :has_borrower_feedback

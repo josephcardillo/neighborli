@@ -69,6 +69,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:borrower_id, :lender_id, :status, :expires_at, :starts_at, :type, :has_borrower_feedback, :has_lender_feedback, :category, :title, :body, :item_location, :loan_duration, :day_rate)
+      params.require(:transaction).permit(:borrower_id, :lender_id, :status, :expires_at, :starts_at, :action, :has_borrower_feedback, :has_lender_feedback, :category, :title, :body, :item_location, :loan_duration, :day_rate)
     end
 end

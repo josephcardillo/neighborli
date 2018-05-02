@@ -1,7 +1,7 @@
 .card
   .card-content
     = form_with(model: transaction, local: true) do |f|
-    - if transaction.errors.any?
+      - if transaction.errors.any?
       #error_explanation
       %h2= "#{pluralize(transaction.errors.count, "error")} prohibited this transaction from being saved:"
       %ul

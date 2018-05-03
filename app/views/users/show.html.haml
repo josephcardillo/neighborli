@@ -1,0 +1,46 @@
+%h3= @user.fname + @user.lname
+%p= @user.email
+
+%h4 Lends
+
+- @lends.each do |f|
+    %p= f.status
+    %p= f.expires_at
+    %p= f.starts_at
+    %p= f.action
+    %p= f.category
+    %p= f.title
+    %p= f.body
+    %p= f.item_location
+    %p= f.loan_duration
+    %p= f.day_rate
+    %p= f.created_at
+    %p= f.updated_at
+    = image_tag (f.avatar.url)
+    
+%h4 Borrows
+
+- @borrows.each do |f|
+    %p= f.status
+    %p= f.expires_at
+    %p= f.starts_at
+    %p= f.action
+    %p= f.category
+    %p= f.title
+    %p= f.body
+    %p= f.item_location
+    %p= f.loan_duration
+    %p= f.day_rate
+    %p= f.created_at
+    %p= f.updated_at
+    = image_tag (f.avatar.url)
+
+
+
+
+
+
+
+
+
+        

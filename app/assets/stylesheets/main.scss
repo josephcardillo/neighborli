@@ -11,3 +11,8 @@ main > .section:first-of-type {
 i.white-text > input {
   color: white;
 }
+
+/* Checkbox Fix */
+.input-field.checkbox > label {
+  position: relative;
+}

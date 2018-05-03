@@ -1,0 +1,8 @@
+.section
+  .container.center-align
+    %h1 Welcome to Neighbor.li
+    .row
+      .col.s6.right-align
+        = button_to 'Register', new_user_registration_path, method: :get, class: "btn waves-effect waves-light green white-text"
+      .col.s6.left-align
+        = button_to 'Login', new_user_session_path, method: :get, class: "btn waves-effect waves-light green white-text"

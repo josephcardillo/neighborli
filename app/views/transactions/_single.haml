@@ -1,0 +1,24 @@
+-# TODO: Move this into the Transaction model.
+- @borrower = User.find(@transaction.borrower_id)
+- @lender = User.find(@transaction.lender_id)
+
+.card
+  .card-image
+    = image_tag (@transaction.avatar.url)
+    %span.card-title= @transaction.title
+  .card-content
+    %p
+      %strong Category:
+      = link_to @transaction.category, @transaction.category
+    %p= @transaction.body
+    %p
+      Lended to
+      = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
+      by
+      = link_to "#{@borrower.fname} #{@borrower.lname}", user_path(@borrower)
+    %p
+      %strong Due Date:
+      = "#{@transaction.loan_duration} days after loan begins."
+  .card-action
+    = link_to 'Edit', edit_transaction_path(@transaction)
+    = link_to 'Back', transactions_path

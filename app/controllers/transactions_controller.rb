@@ -25,7 +25,12 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-
+    if @transaction.action == "Lend"
+      @transaction.lender_id = current_user.id
+    elsif @transaction.action == "Borrow"
+      @transaction.borrower_id = current_user.id
+    end
+    @transaction.status = "Open"
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }

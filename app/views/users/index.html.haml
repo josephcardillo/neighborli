@@ -1,0 +1,8 @@
+%h2 Users
+
+- @users.each do |user|
+      = link_to(user.fname + " " + user.lname, user_path(user) )
+      %p= user.email
+      
+  
+      

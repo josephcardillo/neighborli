@@ -1,5 +1,9 @@
 .section
   .container
+    = link_to 'Log Out', destroy_user_session_path, method: :delete
+
+.section
+  .container
     %p#notice= notice
     %h1 Transactions
 

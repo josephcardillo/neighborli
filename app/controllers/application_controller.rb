@@ -8,4 +8,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
+  #
+  # def after_sign_in_path_for(resource_or_scope)
+  #  user_path(current_shipper)
+  # end
 end

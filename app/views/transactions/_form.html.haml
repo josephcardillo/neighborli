@@ -7,33 +7,24 @@
           %ul
             = transaction.errors.full_messages.each do |message|
               %li= message
+      .row
+        .col.s12.l6
+          .input-field.datepicker.active
+            = f.label :starts_at
+            = f.text_field :starts_at
+        .col.s12.l6
+          .input-field.datepicker.active
+            = f.label :expires_at
+            = f.text_field :expires_at
       .input-field
-        = f.label :lender_id
-        = f.hidden_field :lender_id
-      .input-field
-        = f.label :borrower_id
-        = f.hidden_field :borrower_id
-      .input-field
-        = f.label :status
-        = f.hidden_field :status
-      .input-field
-        = f.label :starts_at
-        = f.text_field :starts_at, class: 'datepicker'
-      .input-field
-        = f.label :expires_at
-        = f.text_field :expires_at, class: 'datepicker'
-      .input-field
-        = f.label :action
-        = select("transaction", "action", options_for_select(ACTION))
-      .input-field
-        = f.label :category
         = select("transaction", "category", options_for_select(CATEGORY))
+        = f.label :category
       .input-field
         = f.label :title
         = f.text_field :title
       .input-field
+        = f.text_area :body, class: 'materialize-textarea'
         = f.label :body
-        = f.text_area :body
       .input-field
         = f.label :item_location
         = f.text_field :item_location
@@ -49,12 +40,11 @@
           = f.file_field :avatar
         .file-path-wrapper
           %input{type: "text", class: "file-path"}
-
-      -# .input-field.checkbox
-      -#   = f.label :has_borrower_feedback
-      -#   = f.check_box :has_borrower_feedback
-      -# .input-field.checkbox
-      -#   = f.label :has_lender_feedback
-      -#   = f.check_box :has_lender_feedback
+          = f.hidden_field :status
+      = f.hidden_field :action
+      = f.hidden_field :lender_id
+      = f.hidden_field :borrower_id
+      = f.hidden_field :has_lender_feedback
+      = f.hidden_field :has_borrower_feedback
       .card-action
         = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

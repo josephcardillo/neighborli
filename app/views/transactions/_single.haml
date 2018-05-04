@@ -11,11 +11,12 @@
       %strong Category:
       = link_to transaction.category, transaction.category
     %p= transaction.body
-    %p
-      Lended to
-      = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
-      by
-      = link_to "#{@borrower.fname} #{@borrower.lname}", user_path(@borrower)
+    - if @borrower and @lender
+      %p
+        Lended to
+        = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
+        by
+        = link_to "#{@borrower.fname} #{@borrower.lname}", user_path(@borrower)
     %p
       %strong Due Date:
       = "#{transaction.loan_duration} days after loan begins."

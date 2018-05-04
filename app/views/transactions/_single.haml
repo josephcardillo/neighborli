@@ -5,7 +5,7 @@
 .card
   .card-image
     = image_tag (transaction.avatar.url)
-    %span.card-title= transaction.title
+    %span.card-title= link_to transaction.title, transaction_path(transaction.id)
   .card-content
     %p
       %strong Category:

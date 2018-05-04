@@ -6,7 +6,10 @@
 .section
   .container
     %h4 New Transactions
-    = render 'transactions/new', transaction: Transaction.new
+    - @transaction = Transaction.new
+    - @transaction.lender_id = current_user.id
+    - @transaction.action = "Lend"
+    = render 'transactions/form', transaction: @transaction
 
 .section
   .container

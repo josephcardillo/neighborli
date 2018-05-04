@@ -7,21 +7,21 @@
           %ul
             = transaction.errors.full_messages.each do |message|
               %li= message
-      -# .input-field
-      -#   = f.label :borrower_id
-      -#   = f.number_field :borrower_id
-      -# .input-field
-      -#   = f.label :lender_id
-      -#   = f.number_field :lender_id
-      -# .input-field
-      -#   = f.label :status
-      -#   = f.text_field :status
+      .input-field
+        = f.label :lender_id
+        = f.hidden_field :lender_id
+      .input-field
+        = f.label :borrower_id
+        = f.hidden_field :borrower_id
+      .input-field
+        = f.label :status
+        = f.hidden_field :status
       .input-field
         = f.label :starts_at
-        = f.datetime_select :starts_at
+        = f.text_field :starts_at, class: 'datepicker'
       .input-field
         = f.label :expires_at
-        = f.datetime_select :expires_at
+        = f.text_field :expires_at, class: 'datepicker'
       .input-field
         = f.label :action
         = select("transaction", "action", options_for_select(ACTION))
@@ -43,9 +43,13 @@
       .input-field
         = f.label :day_rate
         = f.text_field :day_rate
-      .input-field
-        = f.label :avatar
-        = f.file_field :avatar
+      .input-field.file-field
+        .btn
+          %span Upload an Image
+          = f.file_field :avatar
+        .file-path-wrapper
+          %input{type: "text", class: "file-path"}
+
       -# .input-field.checkbox
       -#   = f.label :has_borrower_feedback
       -#   = f.check_box :has_borrower_feedback

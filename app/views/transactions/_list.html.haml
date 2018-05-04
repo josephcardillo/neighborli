@@ -1,0 +1,8 @@
+- left,right = @transactions.in_groups_of( (@transactions.count/2.0).ceil, false )
+.row
+  .col.s6
+    - left.each do |t|
+      = render 'single', transaction: t
+  .col.s6
+    - right.each do |t|
+      = render 'single', transaction: t

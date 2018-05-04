@@ -5,4 +5,6 @@ $(document).on("turbolinks:load", () => {
   $(".fixed-action-btn").floatingActionButton({ direction: "left" });
   // Initialize DatePickers.
   $(".datepicker input").datepicker();
+  // Initialize our Selects.
+  $(".input-field select").formSelect();
 });

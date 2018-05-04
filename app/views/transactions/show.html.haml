@@ -5,7 +5,9 @@
 .section
   .container
     %h2 Fancy Transaction
-    = render 'single', transaction: @transaction
+    .row
+      .col.s6.offset-s3
+        = render 'single', transaction: @transaction
 .section
   .container
     %h2 Debug Transaction
@@ -13,3 +15,12 @@
 .section
   .container
     = link_to 'New Transaction', new_transaction_path
+.section
+  - if current_user.id == @lender.id
+    .container
+      %h2= "Leave Feedback for #{@borrower.fname}"
+      = render 'transactions/feedback', feedback: Feedback.new
+  - elsif current_user.id == @borrower.id
+    .container
+      %h2= "Leave Feedback for #{@lender.fname}"
+      = render 'transactions/feedback', feedback: Feedback.new

@@ -12,7 +12,15 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show; end
+  def show
+    set_transaction
+    @lender = @transaction.lender
+    @borrower = @transaction.borrower
+    puts '**************************'
+    puts @lender.id
+    puts @borrower.id
+    puts '**************************'
+  end
 
   # GET /transactions/new
   def new
@@ -75,6 +83,15 @@ class TransactionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
+  end
+
+  def set_user
+    # set_transaction
+    # if current_user == @lender.id
+    #   user_id == @borrower.id
+    # elsif current_user == @borrower.id
+    #   user_id == @lender.id
+    # end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

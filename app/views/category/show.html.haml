@@ -1,0 +1,40 @@
+%h1 Category#show
+%p Find me in app/views/category/show.html.haml
+
+
+= render 'transactions/debuglist', transactions: @transactions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-# - @transactions.each do |t|
+-#     = t.borrower_id
+-#     = t.lender_id
+-#     = t.status
+-#     = t.expires_at
+-#     = t.starts_at
+-#     = t.action
+-#     = t.has_borrower_feedback
+-#     = t.has_lender_feedback
+-#     = t.category
+-#     = t.title
+-#     = t.body
+-#     = t.item_location
+-#     = t.loan_duration
+-#     = t.day_rate
+-#     = link_to 'Show', t
+-#     = link_to 'Edit', edit_transaction_path(t)
+-#     = link_to 'Destroy', t, method: :delete, data: { confirm: 'Are you sure?' }

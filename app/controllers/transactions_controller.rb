@@ -14,6 +14,10 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.json
   def show
     set_transaction
+    # @feedback = Feedback.find(params[:id])
+    # puts '**************************'
+    # puts @feedback
+    # puts '**************************'
     @lender = @transaction.lender
     @borrower = @transaction.borrower
     puts '**************************'

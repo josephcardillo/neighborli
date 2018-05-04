@@ -24,5 +24,11 @@
       .input-field
         = f.label :comment
         = f.text_field :comment
+      - if current_user.id == @lender.id && @transaction.has_lender_feedback == false
+        .input-field
+          = f.hidden_field :has_lender_feedback, :value => true
+      - elsif current_user.id == @borrower.id && @transaction.has_borrower_feedback == false
+        .input-field
+          = f.hidden_field :has_borrower_feedback, :value => true
       .card-action
         = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

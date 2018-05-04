@@ -9,7 +9,7 @@
   .card-content
     %p
       %strong Category:
-      = link_to transaction.category, transaction.category
+      -# = link_to transaction.category, category_single_path(transaction.category)
     %p= transaction.body
     - if @borrower and @lender
       %p

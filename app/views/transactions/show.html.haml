@@ -5,7 +5,9 @@
 .section
   .container
     %h2 Fancy Transaction
-    = render 'single', transaction: @transaction
+    .row
+      .col.s6.offset-s3
+        = render 'single', transaction: @transaction
 .section
   .container
     %h2 Debug Transaction

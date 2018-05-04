@@ -1,0 +1,48 @@
+.section
+  .container
+    %p#notice= notice
+    %ul.collection.with-header
+      %li.collection-header
+        %h4
+          = link_to transaction.title, transaction_path(transaction.id)
+      %li.collection-item
+        %strong Borrower:
+        = transaction.borrower_id
+      %li.collection-item
+        %strong Lender:
+        = transaction.lender_id
+      %li.collection-item
+        %strong Status:
+        = transaction.status
+      %li.collection-item
+        %strong Expires at:
+        = transaction.expires_at
+      %li.collection-item
+        %strong Starts at:
+        = transaction.starts_at
+      %li.collection-item
+        %strong Action:
+        = transaction.action
+      %li.collection-item
+        %strong Has borrower feedback:
+        = transaction.has_borrower_feedback
+      %li.collection-item
+        %strong Has lender feedback:
+        = transaction.has_lender_feedback
+      %li.collection-item
+        %strong Category:
+        = transaction.category
+      %li.collection-item
+        %strong Body:
+        = transaction.body
+      %li.collection-item
+        %strong Item location:
+        = transaction.item_location
+      %li.collection-item
+        %strong Loan duration:
+        = transaction.loan_duration
+      %li.collection-item
+        %strong Day rate:
+        = transaction.day_rate
+      %li.collection-item
+        = image_tag (transaction.avatar.url)

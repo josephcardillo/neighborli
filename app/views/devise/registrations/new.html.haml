@@ -6,6 +6,8 @@
         .card-content
           = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f|
             = devise_error_messages!
+            %span.card-title Required
+            %hr
             .input-field
               = f.label "First Name"
               = f.text_field :fname, autofocus: true, autocomplete: "off"
@@ -23,9 +25,14 @@
             .input-field
               = f.label :password_confirmation
               = f.password_field :password_confirmation, autocomplete: "off"
-            .input-field
-              = f.label :avatar
-              = f.file_field :avatar
+            %span.card-title.pt-2em Suggested
+            %hr
+            .input-field.file-field
+              .btn
+                %span Upload An Avatar
+                = f.file_field :avatar
+              .file-path-wrapper
+                %input{type: "text", class: "file-path"}
             .card-action
               = f.submit "Sign up", class: "btn waves-effect waves-light green white-text"
 

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# :nodoc:
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :set_feedback, only: %i[show edit update destroy]
 
   # GET /feedbacks
   # GET /feedbacks.json
@@ -9,8 +12,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1
   # GET /feedbacks/1.json
-  def show
-  end
+  def show; end
 
   # GET /feedbacks/new
   def new
@@ -18,8 +20,7 @@ class FeedbacksController < ApplicationController
   end
 
   # GET /feedbacks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /feedbacks
   # POST /feedbacks.json
@@ -62,13 +63,14 @@ class FeedbacksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_feedback
-      @feedback = Feedback.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def feedback_params
-      params.require(:feedback).permit(:user_id, :rating, :transaction_id, :comment)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_feedback
+    @feedback = Feedback.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def feedback_params
+    params.require(:feedback).permit(:user_id, :rating, :transaction_id, :comment)
+  end
 end

@@ -1,12 +1,14 @@
-class UsersController < ApplicationController
-    def index
-    @users = User.all
-    end
+# frozen_string_literal: true
 
-    def show
-    @transaction = Transaction.new
+# :nodoc:
+class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def show
     @user = User.find(params[:id])
-    @lends = Transaction.where("lender_id = #{@user.id}")
-    @borrows = Transaction.where("borrower_id = #{@user.id}")
-    end
+    @lends = Transaction.where('lender_id = ?', @user.id)
+    @borrows = Transaction.where('borrower_id = ?', @user.id)
+  end
 end

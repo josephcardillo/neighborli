@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# :nodoc:
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: %i[show edit update destroy]
 
   # GET /transactions
   # GET /transactions.json
@@ -9,8 +12,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show
-  end
+  def show; end
 
   # GET /transactions/new
   def new
@@ -18,19 +20,16 @@ class TransactionsController < ApplicationController
   end
 
   # GET /transactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /transactions
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-    if @transaction.action == "Lend"
-      @transaction.lender_id = current_user.id
-    elsif @transaction.action == "Borrow"
-      @transaction.borrower_id = current_user.id
-    end
-    @transaction.status = "Open"
+    @transaction.lender_id = current_user.id
+    @transaction.action = 'Lend'
+    @transaction.status = 'Open'
+
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -67,13 +66,14 @@ class TransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def transaction_params
-      params.require(:transaction).permit(:borrower_id, :lender_id, :status, :expires_at, :starts_at, :action, :has_borrower_feedback, :has_lender_feedback, :category, :title, :body, :item_location, :loan_duration, :day_rate, :avatar)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def transaction_params
+    params.require(:transaction).permit(:borrower_id, :lender_id, :status, :expires_at, :starts_at, :action, :has_borrower_feedback, :has_lender_feedback, :category, :title, :body, :item_location, :loan_duration, :day_rate, :avatar)
+  end
 end

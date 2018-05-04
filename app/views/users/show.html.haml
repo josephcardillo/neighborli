@@ -1,82 +1,17 @@
-%h3= @user.fname + @user.lname
-%p= @user.email
-
-%h4 New Transaction
-    
-= form_with(model: @transaction, url: transactions_path, local: true) do |f|
-    .input-field
-        = f.label :expires_at
-        = f.datetime_select :expires_at
-    .input-field
-        = f.label :starts_at
-        = f.datetime_select :starts_at
-    .input-field
-        = f.label :action
-        = select("transaction", "action", options_for_select(ACTION))
-    .input-field
-        = f.label :category
-        = select("transaction", "category", options_for_select(CATEGORY))
-    .input-field
-        = f.label :title
-        = f.text_field :title
-    .input-field
-        = f.label :body
-        = f.text_area :body
-    .input-field
-        = f.label :item_location
-        = f.text_field :item_location
-    .input-field
-        = f.label :loan_duration
-        = f.number_field :loan_duration
-    .input-field
-        = f.label :day_rate
-        = f.text_field :day_rate
-    .input-field
-        = f.label :avatar
-        = f.file_field :avatar
-    .action
-        = f.submit "Submit"
-
-%h4 Lends
-
-- @lends.each do |f|
-    %p= f.status
-    %p= f.expires_at
-    %p= f.starts_at
-    %p= f.action
-    %p= f.category
-    %p= f.title
-    %p= f.body
-    %p= f.item_location
-    %p= f.loan_duration
-    %p= f.day_rate
-    %p= f.created_at
-    %p= f.updated_at
-    = image_tag (f.avatar.url)
-    
-%h4 Borrows
-
-- @borrows.each do |f|
-    %p= f.status
-    %p= f.expires_at
-    %p= f.starts_at
-    %p= f.action
-    %p= f.category
-    %p= f.title
-    %p= f.body
-    %p= f.item_location
-    %p= f.loan_duration
-    %p= f.day_rate
-    %p= f.created_at
-    %p= f.updated_at
-    = image_tag (f.avatar.url)
-
-
-
-
-
-
-
-
-
-        
+.section
+  .container
+    %h1= "#{@user.fname} #{@user.lname}"
+    %p= @user.email
+.section
+  .container
+    .row
+      .col.s12.l6
+        %h4 Lends
+        - @lends.each do |lend_trans|
+          = render 'transactions/single', transaction: lend_trans
+          -# = render 'transactions/debugsingle', transaction: lend_trans
+      .col.s12.l6
+        %h4 Borrows
+        - @borrows.each do |borrow_trans|
+          = render 'transactions/single', transaction: borrow_trans
+          -# = render 'transactions/debugsingle', transaction: borrow_trans

@@ -11,3 +11,21 @@ main > .section:first-of-type {
 i.white-text > input {
   color: white;
 }
+
+/* Checkbox Fix */
+.input-field.checkbox > label {
+  position: relative;
+}
+
+/* Helper */
+.pt-2em {
+  padding-top: 2em;
+}
+
+/* Let Forms Breathe */
+.input-field {
+  margin: 2em 0;
+}
+.card-action {
+  margin-top: 4em;
+}

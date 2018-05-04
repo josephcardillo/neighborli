@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root :to => "homepage#index"
+  root 'homepage#index'
+
   devise_for :users
+
   resources :feedbacks
   resources :transactions
-  resources :users, :only => [:index, :show] 
+  resources :users, only: %i[index show]
 end
-

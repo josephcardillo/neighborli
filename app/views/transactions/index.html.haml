@@ -2,17 +2,14 @@
   .container
     %p#notice= notice
     %h1 Transactions
-
 .section
   .container
     %h2 Fancy Transactions
     = render 'list', locals: {transactions: @transactions}
-
 .section
   .container
     %h2 Debug Table
     = render 'debuglist', locals: {transactions: @transactions}
-
 .section
   .container
     = link_to 'New Transaction', new_transaction_path

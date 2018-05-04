@@ -3,7 +3,7 @@
     .nav-wrapper
       %form
         .input-field
-          %input#search{type: "search", required: true}
-          %label.label-icon{for:"search"}
+          = search_field 'search', nil
+          %label.label-icon
             %i.material-icons search
           %i.material-icons close

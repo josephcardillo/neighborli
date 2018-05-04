@@ -2,17 +2,14 @@
   .container
     %p#notice= notice
     %h1 Single Transaction
-
 .section
   .container
     %h2 Fancy Transaction
-    = render 'single', locals: {transaction: @transaction}
-
+    = render 'single', transaction: @transaction
 .section
   .container
     %h2 Debug Transaction
-    = render 'debugsingle', locals: {transaction: @transaction}
-
+    = render 'debugsingle', transaction: @transaction
 .section
   .container
     = link_to 'New Transaction', new_transaction_path

@@ -1,6 +1,6 @@
 .section
   .container
     %h1 Editing Transaction
-    = render 'form', transaction: @transaction
+    = render 'new', transaction: @transaction
     = link_to 'Show', @transaction
     = link_to 'Back', transactions_path

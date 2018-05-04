@@ -1,5 +1,5 @@
 .section
   .container
     %h1 New Transaction
-    = render 'form', transaction: @transaction
+    = render 'new', transaction: Transaction.new
     = link_to 'Back', transactions_path

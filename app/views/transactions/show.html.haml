@@ -16,7 +16,7 @@
   .container
     = link_to 'New Transaction', new_transaction_path
 .section
-  - if current_user.id == @lender.id
+  - if current_user.id == @lender.id && @feedback.transaction
     .container
       %h2= "Leave Feedback for #{@borrower.fname}"
       = render 'transactions/feedback', feedback: Feedback.new

@@ -1,6 +1,7 @@
 class Transaction < ApplicationRecord
   belongs_to :borrower, optional: true, class_name:"User"
   belongs_to :lender, optional: true, class_name: "User"
+  has_many :feedbacks
   mount_uploader :avatar, AvatarUploader
 
   validates :status, presence: true, length: {in: 4..9}

@@ -4,8 +4,6 @@
     .container
       %h1 Editing Transaction
       = render 'form', transaction: @transaction
-      = link_to 'Show', @transaction
-      = link_to 'Back', transactions_path
 - else
   -# Otherwise, let them know we're onto them:
   .section

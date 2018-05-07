@@ -14,11 +14,11 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.json
   def show
     set_transaction
-    @lender = @transaction.lender
-    @borrower = @transaction.borrower
-    @feedbacks = @transaction.feedbacks
-    @feedback_borrower = @feedbacks.listing.borrower
-    @feedback_lender = @feedbacks.listing.lender
+    # @lender = @transaction.lender
+    # @borrower = @transaction.borrower
+    # @feedbacks = @transaction.feedbacks
+    # @feedback_borrower = @feedbacks.listing.borrower
+    # @feedback_lender = @feedbacks.listing.lender
     # puts '**************************'
     # puts @lender.id
     # puts @borrower.id
@@ -88,14 +88,14 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
   end
 
-  def set_user
+  # def set_user
     # set_transaction
     # if current_user == @lender.id
     #   user_id == @borrower.id
     # elsif current_user == @borrower.id
     #   user_id == @lender.id
     # end
-  end
+  # end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def transaction_params

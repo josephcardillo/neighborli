@@ -3,8 +3,8 @@
 Rails.application.routes.draw do
   root 'homepage#index'
 
-  get 'category/index'
-  get 'category/:category' => 'category#show', as: 'category_single'
+  get 'categories' => 'category#index'
+  get 'category/:category' => 'category#show', as: 'category'
   patch 'borrow/:id' => 'transactions#borrow', as: 'borrow'
 
   devise_for :users

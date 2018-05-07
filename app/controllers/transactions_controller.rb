@@ -28,9 +28,8 @@ class TransactionsController < ApplicationController
   def edit; end
 
   def borrow
-    @transaction = Transaction.find(params[:id])
-    Transaction.update(params[:id], :borrower_id => current_user.id, :status => 'Closed')
-    redirect_to transaction_path(@transaction)
+    Transaction.update(params[:id], borrower_id: current_user.id, status: 'Closed')
+    redirect_to transaction_path(params[:id])
   end
 
   # POST /transactions

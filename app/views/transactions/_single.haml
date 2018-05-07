@@ -21,4 +21,4 @@
     = link_to 'Edit', edit_transaction_path(transaction)
     = link_to 'Back', transactions_path
     -if transaction.status == "Open" && transaction.lender_id != current_user.id
-      = button_to 'Borrow this!', borrow_path(transaction), method: :patch
+      = button_to 'Borrow this!', borrow_path(transaction), method: :patch, class: "btn waves-effect waves-light green white-text"

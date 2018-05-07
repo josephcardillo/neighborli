@@ -1,6 +1,15 @@
-.section
-  .container
-    %h1 Editing Transaction
-    = render 'form', transaction: @transaction
-    = link_to 'Show', @transaction
-    = link_to 'Back', transactions_path
+- if user_signed_in? && current_user.id == @transaction.lender_id
+  -# If the current user is the lender for this transaction, let them edit:
+  .section
+    .container
+      %h1 Editing Transaction
+      = render 'form', transaction: @transaction
+      = link_to 'Show', @transaction
+      = link_to 'Back', transactions_path
+- else
+  -# Otherwise, let them know we're onto them:
+  .section
+    .container.center-align
+      %h1 Whoops!
+      %p It looks like you tried to edit a transaction you don't own.
+      %a{href: new_transaction_path} Perhaps you'd like to create a new transaction instead?

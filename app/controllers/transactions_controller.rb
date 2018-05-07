@@ -16,7 +16,7 @@ class TransactionsController < ApplicationController
     set_transaction
     @lender = @transaction.lender
     @borrower = @transaction.borrower
-    @feedbacks = @transaction.feedbacks
+    @feedback = @transaction.feedbacks
   end
 
   # GET /transactions/new

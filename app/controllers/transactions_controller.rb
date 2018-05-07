@@ -16,9 +16,9 @@ class TransactionsController < ApplicationController
     set_transaction
     @lender = @transaction.lender
     @borrower = @transaction.borrower
-    @feedbacks = @transaction.feedbacks
-    @feedback_borrower = @feedbacks.listing.borrower
-    @feedback_lender = @feedbacks.listing.lender
+    @feedbacks = Feedback.all
+    # @feedback_borrower = @feedbacks.listing.borrower
+    # @feedback_lender = @feedbacks.listing.lender
     # puts '**************************'
     # puts @lender.id
     # puts @borrower.id

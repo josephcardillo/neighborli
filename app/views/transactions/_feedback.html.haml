@@ -11,7 +11,7 @@
         .input-field
           -# = f.label :user_id
           = f.hidden_field :user_id, :value => @borrower.id
-      - elsif current_user.id == @lender.id
+      - elsif current_user.id == @borrower.id
         .input-field
           -# = f.label :user_id
           = f.hidden_field :user_id, :value => @lender.id
@@ -21,6 +21,14 @@
       .input-field
         -# = f.label :transaction_id
         = f.hidden_field :transaction_id, :value => @transaction.id
+      - if @transaction.has_borrower_feedback == false && current_user.id == @lender.id
+        .input-field
+          -# = f.label :transaction_id
+          = f.hidden_field :has_borrower_feedback, :value => true
+      - elsif @transaction.has_lender_feedback == false && current_user.id == @borrower.id
+        .input-field
+          -# = f.label :transaction_id
+          = f.hidden_field :has_borrower_feedback, :value => true
       .input-field
         = f.label :comment
         = f.text_field :comment

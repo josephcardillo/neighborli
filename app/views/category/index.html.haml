@@ -1,4 +1,6 @@
-%h1 Category#index
-%p Find me in app/views/category/index.html.haml
-
-= CATEGORY.map{|wl| link_to wl, '/category/' + wl}.join(', ').html_safe
+.section
+  .container
+    %h1 Categories
+    %ul.collection
+      - CATEGORY.each do |cat|
+        = link_to cat, category_path(cat), class: 'collection-item'

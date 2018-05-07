@@ -24,8 +24,11 @@
     %p
       %strong Due Date:
       = "#{transaction.loan_duration} days after loan begins."
-  .card-action
-    = link_to 'Edit', edit_transaction_path(transaction)
-    = link_to 'Back', transactions_path
-    -if transaction.status == "Open" && transaction.lender_id != current_user.id
+  -# Let the owner of this transaction edit it.
+  - if transaction.lender_id == current_user.id
+    .card-action
+      = link_to 'Edit', edit_transaction_path(transaction)
+  -# If the transaction is open, let anyone but the lender borrow it.
+  - if transaction.status == "Open" && transaction.lender_id != current_user.id
+    .card-action
       = button_to 'Borrow this!', borrow_path(transaction), method: :patch, class: "btn waves-effect waves-light green white-text"

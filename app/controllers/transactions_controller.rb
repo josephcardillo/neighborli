@@ -16,10 +16,13 @@ class TransactionsController < ApplicationController
     set_transaction
     @lender = @transaction.lender
     @borrower = @transaction.borrower
-    puts '**************************'
-    puts @lender.id
-    puts @borrower.id
-    puts '**************************'
+    @feedbacks = @transaction.feedbacks
+    @feedback_borrower = @feedbacks.listing.borrower
+    @feedback_lender = @feedbacks.listing.lender
+    # puts '**************************'
+    # puts @lender.id
+    # puts @borrower.id
+    # puts '**************************'
   end
 
   # GET /transactions/new
@@ -30,9 +33,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/edit
   def edit; end
 
-  def borrow 
+  def borrow
     Transaction.update(params[:id], :borrower_id => current_user.id, :status => 'Closed')
-    
+
   end
 
   # POST /transactions

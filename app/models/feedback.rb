@@ -1,5 +1,7 @@
 class Feedback < ApplicationRecord
     belongs_to :user
+    belongs_to :listing, class_name: :Transaction, foreign_key: "transaction_id"
+    # belongs_to :thing
 
     validates :rating, numericality: { less_than_or_equal_to: 5,  only_integer: true }
 

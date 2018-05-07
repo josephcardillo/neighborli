@@ -1,31 +1,79 @@
-/* Globals */
+/* Globals
+ *****************************************************************************/
 html,
 body {
   background-color: #fafafa;
 }
-main > .section:first-of-type {
+
+main>.section:first-of-type {
   padding-top: 6rem;
 }
 
-/* Button Fix */
-i.white-text > input {
+
+/* Materialize Icons Bugfix
+ *****************************************************************************/
+i.white-text>input {
   color: white;
 }
 
-/* Checkbox Fix */
-.input-field.checkbox > label {
-  position: relative;
-}
 
-/* Helper */
+/* Helpers
+ *****************************************************************************/
 .pt-2em {
   padding-top: 2em;
 }
 
-/* Let Forms Breathe */
+
+/* Forms
+ *****************************************************************************/
 .input-field {
   margin: 2em 0;
 }
+.input-field.checkbox>label {
+  position: relative;
+}
+
 .card-action {
   margin-top: 4em;
+}
+
+
+/* GMaps
+ *****************************************************************************/
+#gmap-container {
+  height: 600px;
+}
+#gmap-container #map {
+  height: 100%;
+}
+#gmap-container .controls {
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  height: 29px;
+  margin-left: 17px;
+  margin-top: 10px;
+  outline: none;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+#gmap-container .controls:focus {
+  border-color: #4d90fe;
+}
+
+#gmap-container .title {
+  font-weight: bold;
+}
+
+#gmap-container #infowindow-content {
+  display: none;
+}
+#gmap-container #map #infowindow-content {
+  display: inline;
 }

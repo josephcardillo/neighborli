@@ -17,8 +17,8 @@ class TransactionsController < ApplicationController
     @lender = @transaction.lender
     @borrower = @transaction.borrower
     @feedbacks = @transaction.feedbacks
-    @feedback_borrower = @feedbacks.listing.borrower
-    @feedback_lender = @feedbacks.listing.lender
+    #@feedback_borrower = @feedbacks.listing.borrower
+    #@feedback_lender = @feedbacks.listing.lender
     # puts '**************************'
     # puts @lender.id
     # puts @borrower.id
@@ -34,8 +34,9 @@ class TransactionsController < ApplicationController
   def edit; end
 
   def borrow
+    @transaction = Transaction.find(params[:id])
     Transaction.update(params[:id], :borrower_id => current_user.id, :status => 'Closed')
-
+    redirect_to transaction_path(@transaction)
   end
 
   # POST /transactions

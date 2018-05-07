@@ -15,6 +15,13 @@
       Lended by
       = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
     %p
+    -if transaction.borrower != nil 
+      %p
+        Borrowed by
+        = link_to "#{transaction.borrower.fname} #{transaction.borrower.lname}", user_path(transaction.borrower)
+    -else 
+      %p Not Borrowed Yet
+    %p
       %strong Due Date:
       = "#{transaction.loan_duration} days after loan begins."
   .card-action

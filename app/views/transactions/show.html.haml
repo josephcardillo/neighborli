@@ -15,12 +15,12 @@
 .section
   .container
     = link_to 'New Transaction', new_transaction_path
-.section
-  - if current_user.id == @lender.id
+-if @borrower != nil
+  .section
     .container
-      %h2= "Leave Feedback for #{@borrower.fname}"
-      = render 'transactions/feedback', feedback: Feedback.new
-  - elsif current_user.id == @borrower.id
-    .container
-      %h2= "Leave Feedback for #{@lender.fname}"
-      = render 'transactions/feedback', feedback: Feedback.new
+      - if current_user.id == @lender.id
+        %h2= "Leave Feedback for #{@borrower.fname}"
+        = render 'transactions/feedback', feedback: Feedback.new
+      -if current_user.id == @borrower.id
+        %h2= "Leave Feedback for #{@lender.fname}"
+        = render 'transactions/feedback', feedback: Feedback.new

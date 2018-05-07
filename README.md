@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Neighbor.li
 
-Things you may want to cover:
+Description: A neighborhood borrowing application that allows users to lend and borrow items within their local communities.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+Clone the repo to your local machine from your terminal:
+`git clone https://github.com/josephcardillo/neighborli.git`
 
-* Configuration
+Run `rails s` to start your local server.
 
-* Database creation
+Go to `http://localhost:3000` to Login, or Sign up and create an account.
 
-* Database initialization
+## Gems used
 
-* How to run the test suite
+* materialize-sass
+* devise
+* carrierwave
 
-* Services (job queues, cache servers, search engines, etc.)
+## Google Maps API
+* This application incorporates the Google Maps [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start) to store the lender's location as a string in our database.
 
-* Deployment instructions
-
-* ...
+## Contributors
+* [David Elster](https://github.com/delster "David Elster")
+* [Noah Callahan](https://github.com/noah-callahan "Noah Callahan")
+* [Joseph Cardillo](https://github.com/josephcardillo "Joseph Cardillo")

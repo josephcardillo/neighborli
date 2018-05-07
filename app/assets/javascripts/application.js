@@ -16,3 +16,4 @@
 //= require materialize
 //= require turbolinks
 //= require main.js
+//= stub 'gmaps'

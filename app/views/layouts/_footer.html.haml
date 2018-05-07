@@ -1,16 +1,17 @@
-.fixed-action-btn
-  %a.btn-floating.btn-large
-    %i.large.material-icons menu
-  %ul
-    %li
-      %a.btn-floating.red{href: new_transaction_path}
-        %i.material-icons mode_edit
-    %li
-      %a.btn-floating.green{href: user_path(current_user)}
-        %i.material-icons account_circle
-    %li
-      -# %a.btn-floating.blue{href: category_index_path}
-        %i.material-icons list
+- if user_signed_in?
+  .fixed-action-btn
+    %a.btn-floating.btn-large
+      %i.large.material-icons menu
+    %ul
+      %li
+        %a.btn-floating.red{href: new_transaction_path}
+          %i.material-icons mode_edit
+      %li
+        %a.btn-floating.green{href: user_path(current_user)}
+          %i.material-icons account_circle
+      %li
+        %a.btn-floating.blue{href: category_index_path}
+          %i.material-icons list
 %footer#main-footer
   .container
     .row.center-align
@@ -20,6 +21,7 @@
         =link_to 'Users', users_path
         =link_to 'Transactions', transactions_path
         =link_to 'Sign Out', destroy_user_session_path, method: :delete
+        =link_to 'Categories', category_index_path
     .row
       #footer-credits
         %p.center-align

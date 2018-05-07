@@ -25,9 +25,14 @@
       .input-field
         = f.text_area :body, class: 'materialize-textarea'
         = f.label :body
-      .input-field
-        = f.label :item_location
-        = f.text_field :item_location
+      .input-field#gmap-container
+        = f.hidden_field :item_location
+        %input#pac-input{class: 'controls browser-default', type: 'text', placeholder: 'Enter a location'}
+        #map
+        #infowindow-content
+          %span#place-name.title
+          %br
+          %span#place-address
       .input-field
         = f.label :loan_duration
         = f.number_field :loan_duration
@@ -48,3 +53,7 @@
       = f.hidden_field :has_borrower_feedback
       .card-action
         = f.submit "Submit", class: "btn waves-effect waves-light green white-text"
+
+-# Include the GMaps JavaScript
+= javascript_include_tag 'gmaps'
+%script{async: true, defer: true, src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAF88J2F_1qnz8gSc1Jyt8ECVtcx2q4Jv0&libraries=places&callback=initMap'}

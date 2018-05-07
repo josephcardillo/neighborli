@@ -30,6 +30,11 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/edit
   def edit; end
 
+  def borrow 
+    Transaction.update(params[:id], :borrower_id => current_user.id, :status => 'Closed')
+    
+  end
+
   # POST /transactions
   # POST /transactions.json
   def create

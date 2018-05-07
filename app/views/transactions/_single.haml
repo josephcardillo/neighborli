@@ -1,5 +1,5 @@
 -# TODO: Move this into the Transaction model.
-- @borrower = User.find(transaction.borrower_id)
+-# @borrower = User.find(transaction.borrower_id)
 - @lender = User.find(transaction.lender_id)
 
 .card
@@ -9,17 +9,16 @@
   .card-content
     %p
       %strong Category:
-      -# = link_to transaction.category, category_single_path(transaction.category)
+      = link_to transaction.category, '/category/' + transaction.category
     %p= transaction.body
-    - if @borrower and @lender
-      %p
-        Lended to
-        = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
-        by
-        = link_to "#{@borrower.fname} #{@borrower.lname}", user_path(@borrower)
+    %p
+      Lended by
+      = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
     %p
       %strong Due Date:
       = "#{transaction.loan_duration} days after loan begins."
   .card-action
     = link_to 'Edit', edit_transaction_path(transaction)
     = link_to 'Back', transactions_path
+    -if transaction.status == "Open" && transaction.lender_id != current_user.id
+      = button_to 'Borrow this!', borrow_path(transaction), method: :patch, class: "btn waves-effect waves-light green white-text"

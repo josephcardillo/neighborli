@@ -1,29 +1,29 @@
--# TODO: Move this into the Transaction model.
--# @borrower = User.find(transaction.borrower_id)
-- @lender = User.find(transaction.lender_id)
-
 .card
   .card-image
     = image_tag (transaction.avatar.url)
-    %span.card-title= link_to transaction.title, transaction_path(transaction.id)
   .card-content
-    %p
-      %strong Category:
-      = link_to transaction.category, '/category/' + transaction.category
-    %p= transaction.body
-    %p
-      Lended by
-      = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
-    %p
-    -if transaction.borrower != nil 
-      %p
-        Borrowed by
-        = link_to "#{transaction.borrower.fname} #{transaction.borrower.lname}", user_path(transaction.borrower)
-    -else 
-      %p Not Borrowed Yet
-    %p
-      %strong Due Date:
-      = "#{transaction.loan_duration} days after loan begins."
+    .row
+      .col.s12.l6
+        %span.card-title= link_to transaction.title, transaction_path(transaction.id)
+        %p
+          %strong Category:
+          = link_to transaction.category, '/category/' + transaction.category
+        %p= transaction.body
+        %p
+          Lended by
+          = link_to "#{transaction.lender.fname} #{transaction.lender.lname}", user_path(transaction.lender)
+        %p
+        -if transaction.borrower != nil
+          %p
+            Borrowed by
+            = link_to "#{transaction.borrower.fname} #{transaction.borrower.lname}", user_path(transaction.borrower)
+        -else
+          %p Not Borrowed Yet
+        %p
+          %strong Due Date:
+          = "#{transaction.loan_duration} days after loan begins."
+      .col.s12.l6.gmap-show
+        .gmap{data: {placeid: transaction.item_location} }
   -# Let the owner of this transaction edit it.
   - if transaction.lender_id == current_user.id
     .card-action

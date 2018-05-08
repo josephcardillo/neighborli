@@ -5,14 +5,17 @@
 .section
   .container
     .row
-      .col.s12.l8.offset-l2
+      .col.s12.l10.offset-l1
         = render 'single', transaction: @transaction
         = render 'feedbacks/list.html.haml'
-      -if @borrower != nil && @transaction.has_lender_feedback == false 
-        .col.s12.l8.offset-l2
+      -if @borrower != nil && @transaction.has_lender_feedback == false
+        .col.s12.l10.offset-l1
           - if current_user.id == @lender.id
             %h2= "Leave Feedback for #{@borrower.fname}"
             = render 'feedbacks/form', feedback: Feedback.new
           -if current_user.id == @borrower.id
             %h2= "Leave Feedback for #{@lender.fname}"
             = render 'feedbacks/form', feedback: Feedback.new
+
+-# Call GMaps Code.
+%script initMap()

@@ -28,6 +28,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
+        Transaction.update(@feedback.transaction_id, :has_lender_feedback => "True")
         format.html { redirect_to transaction_path(@feedback.transaction_id), notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else

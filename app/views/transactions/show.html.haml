@@ -7,7 +7,8 @@
     .row
       .col.s12.l8.offset-l2
         = render 'single', transaction: @transaction
-      -if @borrower != nil
+        = render 'feedbacks/list.html.haml'
+      -if @borrower != nil && @transaction.has_lender_feedback == false 
         .col.s12.l8.offset-l2
           - if current_user.id == @lender.id
             %h2= "Leave Feedback for #{@borrower.fname}"

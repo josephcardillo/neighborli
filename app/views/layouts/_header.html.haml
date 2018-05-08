@@ -7,3 +7,7 @@
           %label.label-icon
             %i.material-icons search
           %i.material-icons close
+
+-# Include the GMaps JavaScript (poorly, refactor this 🤮)
+%script{src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAF88J2F_1qnz8gSc1Jyt8ECVtcx2q4Jv0&libraries=places'}
+= javascript_include_tag 'gmaps'

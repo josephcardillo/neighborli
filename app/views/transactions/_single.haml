@@ -1,24 +1,34 @@
--# TODO: Move this into the Transaction model.
--# @borrower = User.find(transaction.borrower_id)
-- @lender = User.find(transaction.lender_id)
-
 .card
   .card-image
     = image_tag (transaction.avatar.url)
-    %span.card-title= link_to transaction.title, transaction_path(transaction.id)
   .card-content
-    %p
-      %strong Category:
-      = link_to transaction.category, '/category/' + transaction.category
-    %p= transaction.body
-    %p
-      Lended by
-      = link_to "#{@lender.fname} #{@lender.lname}", user_path(@lender)
-    %p
-      %strong Due Date:
-      = "#{transaction.loan_duration} days after loan begins."
-  .card-action
-    = link_to 'Edit', edit_transaction_path(transaction)
-    = link_to 'Back', transactions_path
-    -if transaction.status == "Open" && transaction.lender_id != current_user.id
+    .row
+      .col.s12.l6
+        %span.card-title= link_to transaction.title, transaction_path(transaction.id)
+        %p
+          %strong Category:
+          = link_to transaction.category, '/category/' + transaction.category
+        %p= transaction.body
+        %p
+          Lended by
+          = link_to "#{transaction.lender.fname} #{transaction.lender.lname}", user_path(transaction.lender)
+        %p
+        -if transaction.borrower != nil
+          %p
+            Borrowed by
+            = link_to "#{transaction.borrower.fname} #{transaction.borrower.lname}", user_path(transaction.borrower)
+        -else
+          %p Not Borrowed Yet
+        %p
+          %strong Due Date:
+          = "#{transaction.loan_duration} days after loan begins."
+      .col.s12.l6.gmap-show
+        .gmap{data: {placeid: transaction.item_location} }
+  -# Let the owner of this transaction edit it.
+  - if transaction.lender_id == current_user.id
+    .card-action
+      = link_to 'Edit', edit_transaction_path(transaction)
+  -# If the transaction is open, let anyone but the lender borrow it.
+  - if transaction.status == "Open" && transaction.lender_id != current_user.id
+    .card-action
       = button_to 'Borrow this!', borrow_path(transaction), method: :patch, class: "btn waves-effect waves-light green white-text"

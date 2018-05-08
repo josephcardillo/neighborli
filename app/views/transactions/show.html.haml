@@ -1,29 +1,23 @@
 .section
   .container
     %p#notice= notice
-    %h1 Single Transaction
+    %h1= @transaction.title
 .section
   .container
-    %h2 Fancy Transaction
     .row
-      .col.s6.offset-s3
+      .col.s12.l10.offset-l1
         = render 'single', transaction: @transaction
-.section
-  .container
-    %h2 Debug Transaction
-    = render 'debugsingle', transaction: @transaction
-.section
-  .container
-    = link_to 'New Transaction', new_transaction_path
-.section
-  - if current_user.id == @lender.id && @transaction.feedbacks.first.user_id == current_user.id || @transaction.feedbacks.first.user_id == current_user.id
-    .container
-      %h2= "Leave Feedback for #{@borrower.fname}"
-      = render 'transactions/feedback', feedback: Feedback.new
-  - elsif current_user.id == @borrower.id && @transaction.feedbacks.first.user_id == current_user.id || @transaction.feedbacks.first.user_id == current_user.id
-    .container
-      %h2= "Leave Feedback for #{@lender.fname}"
-      = render 'transactions/feedback', feedback: Feedback.new
-  - else
-    .container
-      = render 'transactions/show_feedback'
+        - if @transaction.has_borrower_feedback || @transaction.has_lender_feedback
+          %ul.collection.z-depth-1
+            - @transaction.feedbacks.each do |fb|
+              = render 'feedbacks/single', feedback: fb
+      -if @borrower != nil && @transaction.has_lender_feedback == nil
+        .col.s12.l10.offset-l1
+          - if current_user.id == @lender.id
+            %h2= "Leave Feedback for #{@borrower.fname}"
+            = render 'feedbacks/form', feedback: Feedback.new
+          -if current_user.id == @borrower.id
+            %h2= "Leave Feedback for #{@lender.fname}"
+            = render 'feedbacks/form', feedback: Feedback.new
+-# Call GMaps Code.
+%script initMap()

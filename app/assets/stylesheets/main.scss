@@ -5,17 +5,15 @@ body {
   background-color: #fafafa;
 }
 
-main>.section:first-of-type {
+main > .section:first-of-type {
   padding-top: 6rem;
 }
 
-
 /* Materialize Icons Bugfix
  *****************************************************************************/
-i.white-text>input {
+i.white-text > input {
   color: white;
 }
-
 
 /* Helpers
  *****************************************************************************/
@@ -23,13 +21,12 @@ i.white-text>input {
   padding-top: 2em;
 }
 
-
 /* Forms
  *****************************************************************************/
 .input-field {
   margin: 2em 0;
 }
-.input-field.checkbox>label {
+.input-field.checkbox > label {
   position: relative;
 }
 
@@ -37,16 +34,26 @@ i.white-text>input {
   margin-top: 4em;
 }
 
-
 /* GMaps
  *****************************************************************************/
-#gmap-container {
+.gmap-show {
+  padding-top: 40% !important;
+}
+.gmap-show .gmap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#gmap-form {
   height: 600px;
 }
-#gmap-container #map {
+#gmap-form #map {
   height: 100%;
 }
-#gmap-container .controls {
+#gmap-form .controls {
   background-color: #fff;
   border-radius: 2px;
   border: 1px solid transparent;
@@ -63,17 +70,28 @@ i.white-text>input {
   text-overflow: ellipsis;
   width: 400px;
 }
-#gmap-container .controls:focus {
+#gmap-form .controls:focus {
   border-color: #4d90fe;
 }
-
-#gmap-container .title {
+#gmap-form .title {
   font-weight: bold;
 }
-
-#gmap-container #infowindow-content {
+#gmap-form #infowindow-content {
   display: none;
 }
-#gmap-container #map #infowindow-content {
+#gmap-form #map #infowindow-content {
   display: inline;
+}
+
+/* User#Show
+ *****************************************************************************/
+#profile-header {
+  display: flex;
+  align-items: center;
+}
+
+#profile-header img {
+  max-height: 8.4rem;
+  width: auto;
+  margin-right: 2rem;
 }

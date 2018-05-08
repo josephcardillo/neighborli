@@ -16,13 +16,7 @@ class TransactionsController < ApplicationController
     set_transaction
     @lender = @transaction.lender
     @borrower = @transaction.borrower
-    @feedbacks = Feedback.all
-    # @feedback_borrower = @feedbacks.listing.borrower
-    # @feedback_lender = @feedbacks.listing.lender
-    # puts '**************************'
-    # puts @lender.id
-    # puts @borrower.id
-    # puts '**************************'
+    @feedback = @transaction.feedbacks
   end
 
   # GET /transactions/new
@@ -34,8 +28,8 @@ class TransactionsController < ApplicationController
   def edit; end
 
   def borrow
-    Transaction.update(params[:id], :borrower_id => current_user.id, :status => 'Closed')
-
+    Transaction.update(params[:id], borrower_id: current_user.id, status: 'Closed')
+    redirect_to transaction_path(params[:id])
   end
 
   # POST /transactions
@@ -88,14 +82,14 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
   end
 
-  def set_user
+  # def set_user
     # set_transaction
     # if current_user == @lender.id
     #   user_id == @borrower.id
     # elsif current_user == @borrower.id
     #   user_id == @lender.id
     # end
-  end
+  # end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def transaction_params

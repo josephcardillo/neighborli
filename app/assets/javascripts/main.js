@@ -7,4 +7,6 @@ $(document).on("turbolinks:load", () => {
   $(".datepicker input").datepicker();
   // Initialize our Selects.
   $(".input-field select").formSelect();
+  // Initialize our Tooltips.
+  $(".tooltipped").tooltip();
 });

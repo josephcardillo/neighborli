@@ -1,5 +1,4 @@
 .section
   .container
     %h1 New Feedback
-    = render 'form', feedback: @feedback
-    = link_to 'Back', feedbacks_path
+    = render 'form', feedback: Feedback.new

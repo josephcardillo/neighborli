@@ -1,6 +1,8 @@
 .section
   .container
-    %h1= "#{@user.fname} #{@user.lname}"
+    %h1#profile-header
+      = image_tag @user.avatar.url, class: 'circle'
+      ="#{@user.fname} #{@user.lname}"
 .section
   .container
     .row
@@ -12,6 +14,5 @@
         %h4 Borrows
         - @borrows.each do |borrow_trans|
           = render 'transactions/single', transaction: borrow_trans
-
 -# Call GMaps Code.
 %script initMap()

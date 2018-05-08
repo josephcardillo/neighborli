@@ -7,8 +7,11 @@
     .row
       .col.s12.l10.offset-l1
         = render 'single', transaction: @transaction
-        = render 'feedbacks/list.html.haml'
-      -if @borrower != nil && @transaction.has_lender_feedback == false
+        - if @transaction.has_borrower_feedback || @transaction.has_lender_feedback
+          %ul.collection.z-depth-1
+            - @transaction.feedbacks.each do |fb|
+              = render 'feedbacks/single', feedback: fb
+      -if @borrower != nil && @transaction.has_lender_feedback == nil
         .col.s12.l10.offset-l1
           - if current_user.id == @lender.id
             %h2= "Leave Feedback for #{@borrower.fname}"
@@ -16,6 +19,5 @@
           -if current_user.id == @borrower.id
             %h2= "Leave Feedback for #{@lender.fname}"
             = render 'feedbacks/form', feedback: Feedback.new
-
 -# Call GMaps Code.
 %script initMap()

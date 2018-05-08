@@ -1,8 +1,8 @@
 %li.collection-item.avatar
-  = image_tag @feedback.user.avatar.url, class: 'circle'
+  = image_tag feedback.user.avatar.url, class: 'circle'
   %span.title
-    = link_to "#{@feedback.user.fname} #{@feedback.user.lname}", @feedback.user
-  %p= "Rating: #{@feedback.rating}"
-  %p= @feedback.comment
-  -if current_user.id == @feedback.user_id
-    = link_to 'Edit', edit_feedback_path(@feedback)
+    = link_to "#{feedback.user.fname} #{feedback.user.lname}", feedback.user
+  %p= "Rating: #{feedback.rating}"
+  %p= feedback.comment
+  -if current_user.id == feedback.user_id
+    = link_to 'Edit', edit_feedback_path(feedback)

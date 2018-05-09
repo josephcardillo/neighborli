@@ -4,6 +4,8 @@
 
 Description: A neighborhood borrowing application that allows users to lend and borrow items within their local communities.
 
+![](neighborli.gif)
+
 ## Getting Started
 
 Clone the repo to your local machine from your terminal:

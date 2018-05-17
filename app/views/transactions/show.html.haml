@@ -15,9 +15,9 @@
         .col.s12.l10.offset-l1
           - if current_user.id == @lender.id
             %h2= "Leave Feedback for #{@borrower.fname}"
-            = render 'feedbacks/form', feedback: Feedback.new
+            = render 'feedbacks/form', feedback: Feedback.new, transaction: @transaction
           -if current_user.id == @borrower.id
             %h2= "Leave Feedback for #{@lender.fname}"
-            = render 'feedbacks/form', feedback: Feedback.new
+            = render 'feedbacks/form', feedback: Feedback.new, transaction: @transaction
 -# Call GMaps Code.
 %script initMap()

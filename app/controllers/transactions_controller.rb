@@ -39,16 +39,23 @@ class TransactionsController < ApplicationController
     @transaction.lender_id = current_user.id
     @transaction.action = 'Lend'
     @transaction.status = 'Open'
-
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+    # t.datetime "expires_at"
+    # t.datetime "starts_at"
+    if @transaction.expires_at <= @transaction.starts_at 
+      flash[:notice] = "Expires at needs to be greater than starts at. Start date also can't be before today."
+      redirect_to new_transaction_path
+    else
+        respond_to do |format|
+          if @transaction.save
+            format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+            format.json { render :show, status: :created, location: @transaction }
+          else
+            flash[:notice] = @transaction.errors.full_messages
+            format.html { render :new }
+            format.json { render json: @transaction.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
   end
 
   # PATCH/PUT /transactions/1

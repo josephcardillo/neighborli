@@ -32,8 +32,8 @@ class FeedbacksController < ApplicationController
         format.html { redirect_to transaction_path(@feedback.transaction_id), notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
-        format.html { render :new }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.html { redirect_to transaction_path(@feedback.transaction_id) }
+        flash[:message] = @feedback.errors.full_messages
       end
     end
   end

@@ -1,23 +1,25 @@
 .card
   .card-content
+    =flash[:message]
     = form_with(model: feedback, local: true) do |f|
       - if feedback.errors.any?
+        
         #error_explanation
           %h2= "#{pluralize(feedback.errors.count, "error")} prohibited this feedback from being saved:"
           %ul
           - feedback.errors.full_messages.each do |message|
             %li= message
       .input-field
-        = f.label :rating
+        = f.label "Rating(Out of 5)"
         = f.number_field :rating
       .input-field
         = f.label :comment
         = f.text_field :comment
       - if feedback.user_id.nil?
         = f.hidden_field :user_id, value: current_user.id
-        = f.hidden_field :transaction_id, value: transaction.id
+        = f.hidden_field :transaction_id, value: params[:id]
       - else
         = f.hidden_field :user_id
-        = f.hidden_field :transaction_id, value: transaction.id
+        = f.hidden_field :transaction_id, value: params[:id]
       .card-action
         = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

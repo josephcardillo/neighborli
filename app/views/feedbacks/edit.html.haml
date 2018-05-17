@@ -1,5 +1,5 @@
 .section
   .container
     %h1 Editing Feedback
-    = render 'form', feedback: @feedback
-    = link_to 'Show', @feedback
+    = render 'form', feedback: @feedback, transaction: @transaction
+    = link_to 'Show', @feedback, transaction: @transaction

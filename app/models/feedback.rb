@@ -3,7 +3,7 @@ class Feedback < ApplicationRecord
     belongs_to :listing, class_name: :Transaction, foreign_key: "transaction_id"
     # belongs_to :thing
 
-    validates :rating, numericality: { less_than_or_equal_to: 5,  only_integer: true }
+    validates :rating, numericality: {greater_than: 0, less_than_or_equal_to: 5,  only_integer: true }
 
     validates :comment, length: {in: 0..280}
 

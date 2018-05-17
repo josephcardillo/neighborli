@@ -15,9 +15,9 @@
         = f.text_field :comment
       - if feedback.user_id.nil?
         = f.hidden_field :user_id, value: current_user.id
-        = f.hidden_field :transaction_id, value: @transaction.id
+        = f.hidden_field :transaction_id, value: transaction.id
       - else
         = f.hidden_field :user_id
-        = f.hidden_field :transaction_id, value: @transaction.id
+        = f.hidden_field :transaction_id, value: transaction.id
       .card-action
         = f.submit "Submit", class: "btn waves-effect waves-light green white-text"

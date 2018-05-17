@@ -1,4 +1,4 @@
--if @transactions.count > 0
+-if @transactions.count > 1
   - left,right = @transactions.in_groups_of( (@transactions.count/2.0).ceil, false )
   .row
     .col.s6
@@ -7,6 +7,12 @@
     .col.s6
       - right.each do |t|
         = render 'transactions/single', transaction: t
+-elsif @transactions.count == 1
+  .row
+    .col.s12
+      = render 'transactions/single', transaction: @transactions[0]
+-else
+  -# No transactions
 
 -# Call GMaps Code.
 %script initMap()

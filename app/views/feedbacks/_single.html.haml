@@ -2,7 +2,6 @@
   = image_tag feedback.user.avatar.url, class: 'circle'
   %span.title
     = link_to "#{feedback.user.fname} #{feedback.user.lname}", feedback.user
-  %p= "Rating: #{feedback.rating}"
+  %p= "Rating: #{feedback.rating} out of 5"
   %p= feedback.comment
-  -if current_user.id == feedback.user_id
-    = link_to 'Edit', edit_feedback_path(feedback)
+

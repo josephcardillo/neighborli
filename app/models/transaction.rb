@@ -12,6 +12,7 @@ class Transaction < ApplicationRecord
   validates :title, presence: true, length: {in: 3..140}
   validates :body, presence: true, length: {in: 5..280}
   validates :item_location, presence: true
-  validates :loan_duration, presence: true
-  validates :day_rate, presence: true
+  validates :loan_duration, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 30 }
+  validates :day_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
+
 end
